@@ -21,5 +21,6 @@ You can use Postman to **GET** and **POST** data
     POST: http://localhost:8080/api/v1/exercise
     
     JSON: {
-          "exercise": "Running",
+          "breathingRepetitions": 30,
+          "date": "2020-09-22"
           }
