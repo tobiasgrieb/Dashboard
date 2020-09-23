@@ -31,3 +31,8 @@ You can use Postman to **GET** and **POST** data
 ---
 
 # REACT
+
+### Install npm packages
+    npm install @material-ui/core
+    npm install anxios
+    npm install react-icons --save

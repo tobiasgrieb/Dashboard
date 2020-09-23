@@ -1,6 +1,7 @@
 import React from 'react';
 import * as AiIcons from 'react-icons/ai'
 import * as IoIcons from 'react-icons/io'
+import * as FcIcons from 'react-icons/fc'
 
 export const SidebarData = [
   {
@@ -10,15 +11,21 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Excercises',
-    path: '/exercises',
-    icon: <IoIcons.IoIosPaper />,
+    title: 'Add exercise',
+    path: '/add-exercise',
+    icon: <FcIcons.FcPlus />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'Show exercises',
+    path: '/show-exercises',
+    icon: <FcIcons.FcList />,
     cName: 'nav-text'
   },
   {
     title: 'About',
     path: '/about',
-    icon: <IoIcons.IoMdHelpCircle />,
+    icon: <FcIcons.FcAbout />,
     cName: 'nav-text'
   },
 ]
