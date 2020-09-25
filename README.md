@@ -28,6 +28,10 @@ You can use Postman to **GET** and **POST** data
           "breathingRepetitions": 30,
           "date": "2020-09-22"
           }
+
+#### Run Spring-Boot service
+    cd ~/backend
+    ./mvnw spring-boot:run
 ---
 
 # REACT
