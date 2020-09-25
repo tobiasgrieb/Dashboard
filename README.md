@@ -11,18 +11,18 @@ This dashboard is for data visualisation for breathing exercises.
 
 # SPRING-BOOT
 ### Endpoints
-- api/v1/exercise
+- api/v1/breathing-exercise
 
 ### Usage
 You can use Postman to **GET** and **POST** data
 
 ### GET
 ###### Get all exercises
-    GET: http://localhost:8080/api/v1/exercise
+    GET: http://localhost:8080/api/v1/breathing-exercise
 
 #### POST
 ###### Add a new exercise
-    POST: http://localhost:8080/api/v1/exercise
+    POST: http://localhost:8080/api/v1/breathing-exercise
 
     JSON: {
           "breathingRepetitions": 30,
@@ -31,7 +31,7 @@ You can use Postman to **GET** and **POST** data
 
 #### Run Spring-Boot service
     cd ~/backend
-    ./mvnw spring-boot:run
+    mvnw spring-boot:run
 ---
 
 # REACT
@@ -40,3 +40,7 @@ You can use Postman to **GET** and **POST** data
     npm install @material-ui/core
     npm install anxios
     npm install react-icons --save
+
+### Start dashboard
+    cd ~/frontend
+    npm start

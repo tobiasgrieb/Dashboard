@@ -1,37 +1,39 @@
 package com.wimhof.business;
 
-import org.springframework.context.annotation.Bean;
+import com.wimhof.business.exceptions.NoExerciseDataException;
+import com.wimhof.business.models.BreathingExercise;
+import com.wimhof.persistence.BreathingExerciseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import persistence.BreathingExerciseModel;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class BreathingExerciseService {
-    private final BreathingExerciseDao exerciseDao;
 
-    public BreathingExerciseService(BreathingExerciseDao exerciseDao) {
-        this.exerciseDao = exerciseDao;
+    @Autowired
+    private BreathingExerciseRepository repository;
+
+    public void add(BreathingExercise exercise) {
+        repository.save(exercise);
     }
 
-    public int addExercise(BreathingExerciseModel exercise) {
-        return exerciseDao.insertExercise(exercise);
+    public List<BreathingExercise> getAll() {
+        ArrayList<BreathingExercise> allBreathingExercises = new ArrayList<>();
+        repository.findAll().forEach(allBreathingExercises::add);
+        return allBreathingExercises;
     }
 
-    public List<BreathingExerciseModel> getAllExercises() {
-        return exerciseDao.getAllExercises();
-    }
+    public BreathingExercise getBestExercise() throws NoExerciseDataException {
+        List<BreathingExercise> allBreathingExercises = getAll();
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/v1/exercise").allowedOrigins("http://localhost:3000");
-            }
-        };
+        try {
+            return allBreathingExercises
+                .stream()
+                .max(Comparator.comparing(BreathingExercise::getBreathingRepetitions))
+                .orElseThrow(NoSuchElementException::new);
+        } catch (NoSuchElementException e) {
+            throw new NoExerciseDataException("No data for breathing exercises available");
+        }
     }
-
 }

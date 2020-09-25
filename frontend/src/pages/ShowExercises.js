@@ -24,7 +24,7 @@ export default function ShowExercises() {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/v1/exercise')
+    axios.get('http://localhost:8080/api/v1/breathing-exercise')
       .then(res => {
         console.log(res)
         setPosts(res.data)

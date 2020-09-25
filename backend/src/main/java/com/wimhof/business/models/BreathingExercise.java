@@ -1,29 +1,33 @@
-package persistence;
+package com.wimhof.business.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.time.LocalDate;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.UUID;
 
-public class BreathingExerciseModel {
+@Entity
+public class BreathingExercise {
+    @Id
+    @GeneratedValue
     private UUID id;
+
     private int breathingRepetitions;
+
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date date;
 
-    public BreathingExerciseModel(UUID id, Date date, int breathingRepetitions) {
-        this.id = id;
+    public BreathingExercise() {}
+
+    public BreathingExercise(Date date, int breathingRepetitions) {
         this.date = date;
         this.breathingRepetitions = breathingRepetitions;
     }
 
     public UUID getId() {
-        return UUID.randomUUID();
-    }
-
-    public Object setId() {
-        return UUID.randomUUID();
+        return id;
     }
 
     public int getBreathingRepetitions() {
